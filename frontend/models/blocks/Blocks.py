@@ -1,4 +1,5 @@
 class Block:
+
     def __init__(self, block_id=None, block_type=None, text=None, next_block_id=None,
                  true_block_id=None, false_block_id=None, position=None):
         self.id = block_id
