@@ -1,6 +1,5 @@
 import tkinter as tk
-from frontend.models.blocks.block import Block
-
+from WpfApp2.frontend.models.blocks.Blocks import Block
 
 class UIManager:
     def __init__(self, workspace):

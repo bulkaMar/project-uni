@@ -1,18 +1,18 @@
 class AbstractBlock:
     def __init__(self, id=None, data=None, ui_array=None):
         if ui_array is not None:
-            self.id = 0  # В оригинале было закомментировано generateID()
-            self.next = list(ui_array)  # Копируем список
+            self.id = 0
+            self.next = list(ui_array)  # ✅ використовує self.next
         else:
             self.id = id
             self.data = data
-            self.next = []  # пустой список по умолчанию
+            self.next = []  # ✅ ВИПРАВЛЕНО тут
 
         self.name_block = None
 
     def clone(self):
         import copy
-        return copy.copy(self)  # поверхностное копирование, как MemberwiseClone
+        return copy.copy(self)
 
     def get_name_block(self):
         return self.name_block
@@ -28,7 +28,7 @@ class AbstractBlock:
 
     def execute(self):
         print(f"Executing AbstractBlock: {self.name_block}, Data: {self.data}\n")
-        for next_block in self.next:
+        for next_block in self.next: 
             if next_block is not None:
                 next_block.execute()
 
