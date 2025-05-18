@@ -33,7 +33,7 @@ block_colors = {
 
 def save_canvas_as_png(canvas):
     try:
-        canvas.update()  # переконуємось, що canvas оновлено
+        canvas.update()
         x = canvas.winfo_rootx()
         y = canvas.winfo_rooty()
         w = canvas.winfo_width()
