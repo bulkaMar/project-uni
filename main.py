@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
+import pyautogui
 
 from WpfApp2.frontend.utils.managers.UIManager import UIManager
 from WpfApp2.frontend.models.blocks.Blocks import Block
@@ -29,6 +30,20 @@ block_colors = {
     "assign": "khaki",
     "print": "plum"
 }
+
+def save_canvas_as_png(canvas):
+    try:
+        canvas.update()  # переконуємось, що canvas оновлено
+        x = canvas.winfo_rootx()
+        y = canvas.winfo_rooty()
+        w = canvas.winfo_width()
+        h = canvas.winfo_height()
+
+        screenshot = pyautogui.screenshot(region=(x, y, w, h))
+        screenshot.save("diagram.png")
+        messagebox.showinfo("Збережено", "Діаграму збережено як diagram.png")
+    except Exception as e:
+        messagebox.showerror("Помилка", f"Не вдалося зберегти діаграму: {e}")
 
 def create_block_ui(canvas, ui_manager, block_type, x=100, y=100):
     global block_counter
@@ -222,6 +237,8 @@ def main():
 
     tk.Button(root, text="🪟 Очистити все", bg="lightgray", command=clear_all_blocks).pack(pady=2)
     tk.Button(root, text="🗑 Видалити блок", bg="tomato", command=lambda: on_key_delete(None)).pack(pady=5)
+    tk.Button(root, text="💾 Зберегти діаграму", bg="lightblue",
+              command=lambda: save_canvas_as_png(canvas)).pack(pady=5)
 
     for btype, label in [("start", "Start"), ("const", "Const"), ("assign", "Assign"), ("print", "Print")]:
         tk.Button(btn_frame, text=label, command=lambda bt=btype: create_block_ui(canvas, ui_manager, bt)).pack(side=tk.LEFT, padx=5)

@@ -1,4 +1,6 @@
 import tkinter as tk
+from tkinter import messagebox
+from PIL import Image
 from WpfApp2.frontend.models.blocks.Blocks import Block
 
 class UIManager:
