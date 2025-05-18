@@ -2,11 +2,11 @@ class AbstractBlock:
     def __init__(self, id=None, data=None, ui_array=None):
         if ui_array is not None:
             self.id = 0
-            self.next = list(ui_array)  # ✅ використовує self.next
+            self.next = list(ui_array)
         else:
             self.id = id
             self.data = data
-            self.next = []  # ✅ ВИПРАВЛЕНО тут
+            self.next = []
 
         self.name_block = None
 

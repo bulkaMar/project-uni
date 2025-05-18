@@ -4,7 +4,7 @@ from LabBackend.blocks.Conditions.AbstractBlock import AbstractBlock
 class InputBlock(AbstractBlock):
     def __init__(self, id: int, data: str):
         super().__init__(id, data)
-        self.name_block = "input"  # 🔁 з малої для get_name_block()
+        self.name_block = "input"
 
     def _is_valid_variable_name(self, variable_name: str) -> bool:
         return re.match(r'^[a-zA-Z_]\w*$', variable_name) is not None
@@ -30,7 +30,6 @@ class InputBlock(AbstractBlock):
         else:
             raise NotImplementedError(f"Programming language '{programming_language}' is not supported.")
 
-        # ✅ передати виконання далі
         for next_block in self.next:
             if next_block is not None:
                 next_block.execute_with_language(programming_language, amount_tabs)

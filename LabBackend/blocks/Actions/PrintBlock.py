@@ -30,7 +30,6 @@ class PrintBlock(AbstractBlock):
         else:
             raise NotImplementedError(f"Programming language '{programming_language}' is not supported.")
 
-        # ✅ Переходимо до наступних блоків
         for next_block in self.next:
             if next_block:
                 next_block.execute_with_language(programming_language, amount_tabs)

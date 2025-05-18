@@ -8,4 +8,4 @@ class Block:
         self.next_block_id = next_block_id
         self.true_block_id = true_block_id
         self.false_block_id = false_block_id
-        self.position = position if position else (0, 0)  # Using tuple (x, y) instead of Point
+        self.position = position if position else (0, 0)

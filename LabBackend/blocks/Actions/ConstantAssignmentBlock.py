@@ -28,7 +28,6 @@ class ConstantAssignmentBlock(AbstractBlock):
         else:
             print("Unknown programming language")
 
-        # ✅ передати виконання наступним блокам
         for next_block in self.next:
             if next_block is not None:
                 next_block.execute_with_language(programming_language, amount_tabs)
